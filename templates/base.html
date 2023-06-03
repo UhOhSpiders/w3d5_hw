@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Library</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
+    </head>
+    <body>
+        <h1>Books</h1>
+        <p>Use form to add book to library</p>
+        <form action="/" method="post">
+            <label for="book_name">Title:</label>
+            <input type="text" name="book_name" id="book_name" required>
+            <label for="author_name">Author:</label>
+            <input type="text" name="author_name" id="author_name" required>
+            <label for="genre">Genre:</label>
+            <input type="text" name="genre" id="genre" required>
+            <input type="submit" value="Add Book">
+        </form>
+       
+    </body>
+    {% block content %}
+
+    {% endblock %}
+</html>

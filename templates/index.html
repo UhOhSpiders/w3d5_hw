@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+    {% block content %}
+    <p>Click title to view details</p>
+            {% for book in book_list %}
+                <div class="book-container">
+                <a href="/book/{{book_list.index(book)}}"> 
+                    <h2> {{book.book_name}} </h2>
+                </a>
+                {% if book.checked_out_status %}
+                    <p>Checked Out: {{book.checked_out_date}} </p> 
+                    <form action="book/return-book/{{book_list.index(book)}}" method="post">
+                        <input type="submit" value="Return Book" class="form-button">
+                    {% else %}
+                    <p> Available</p>
+                    <form action="book/check-out/{{book_list.index(book)}}" method="post">
+                        <input type="submit" value="Check-out Book" class="form-button">
+                    </form>
+                    {% endif %}
+                <form action="book/delete/{{book_list.index(book)}}" method="post">
+                    <input type="submit" value="Delete Book" class="form-button">
+                </form>
+                </div>
+            {% endfor %}
+    {% endblock %}
